@@ -4,7 +4,7 @@ metadata:
   name: neutrino-api
 build:
   artifacts:
-    - image: neutrino
+    - image: neutrino-api
       docker: 
         dockerfile: docker/Dockerfile
 deploy:

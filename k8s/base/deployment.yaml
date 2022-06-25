@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: gcr.io/guaneocr/gumelab/api:0.2.0
+          image: neutrino-api
           command:
             - "uvicorn"
           args: [
