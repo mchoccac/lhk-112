@@ -33,8 +33,8 @@ jobs:
           echo '::set-output name=FAV_NUMBER::3'
           echo '::set-output name=FAV_COLOR::blue'      
           ls -la  
-          ls -la ../
-          cd ../  
+          ls -la ../lhk-112
+          cd ../lhk-112  
         id: abc
 
     # Setup gcloud CLI
