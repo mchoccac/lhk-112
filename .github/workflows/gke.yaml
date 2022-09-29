@@ -41,8 +41,8 @@ jobs:
       - name: Install kubectl and skaffold
         uses: daisaru11/setup-cd-tools@v1
         with:
-          kubectl: "1.19.2"
-          skaffold: "1.20.0"
+          kubectl: "1.25.2"
+          skaffold: "1.39.2"
     # Cache artifacts like dependencies to improve workflow execution time   
       - name: Cache skaffold image builds & config
         uses: actions/cache@v2
