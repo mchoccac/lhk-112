@@ -63,7 +63,7 @@ spec:
         envFrom:
         - configMapRef:
             name: api-config
-        image: gcr.io/praxis-gear-314101/neutrino-api/neutrino-api:87e171a-dirty@sha256:e72bbdd604f763b0b2e01d3c88989431fd254520f202da4f2bb2866316d83b56
+        image: gcr.io/praxis-gear-314101/neutrino-api/neutrino-api:71b3c45-dirty@sha256:f8aa07c007be54241ed3b89c785bf6935544f529e00bd9384a3be37badac736f
         name: api
         ports:
         - containerPort: 80
