@@ -60,7 +60,7 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build and deploy to cluster with Skaffold
         run: |
-          skaffold run && skaffold render --output=manifest.yaml
+          skaffold run && skaffold render --output=kubernetes/manifest.yaml
           
       - name: GIT commit and push docs
         run: |
