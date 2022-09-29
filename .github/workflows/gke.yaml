@@ -18,7 +18,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   GKE_CLUSTER: lhk-112
-  GKE_ZONE: us-central1
+  GKE_ZONE: us-central1-c
   SKAFFOLD_DEFAULT_REPO: gcr.io/${{ secrets.PROJECT_ID }}/neutrino-api
   
 jobs:
@@ -36,7 +36,7 @@ jobs:
 
     # Setup gcloud CLI
       - name: Install gcloud
-        uses: google-github-actions/setup-gcloud@main
+        uses: google-github-actions/setup-gcloud@v0
         with:
           version: "309.0.0"
           service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
