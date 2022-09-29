@@ -57,7 +57,7 @@ jobs:
           git config --global user.email "elias.quintero@udea.edu.co"
           git add kubernetes/manifest.yaml
           git commit -m "New Deployment"
-          git push origin main
+        #  git push origin main
 
       - name: Verify deployment
         run: |
