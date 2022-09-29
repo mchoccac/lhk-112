@@ -60,7 +60,17 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build and deploy to cluster with Skaffold
         run: |
-          skaffold run
+          skaffold run && skaffold render --output=manifest.yaml
+
+      - name: GIT commit and push docs
+        run: |
+          git config --global user.name "martineliasq"
+          git config --global user.email "elias.quintero@udea.edu.co"
+          git add manifest.yaml
+          git commit -m "New Deployment"
+          git checkout prod
+          git push origin prod
+
       - name: Verify deployment
         run: |
           kubectl get all
