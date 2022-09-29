@@ -33,7 +33,11 @@ jobs:
           echo '::set-output name=FAV_NUMBER::3'
           echo '::set-output name=FAV_COLOR::blue'          
         id: abc
-
+      - name: Do Work
+        run: |
+          ls -la
+     
+        id: abc
     # Setup gcloud CLI
       - name: Install gcloud
         uses: google-github-actions/setup-gcloud@v0
