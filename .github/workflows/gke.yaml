@@ -28,15 +28,6 @@ jobs:
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     steps:
-      - name: Do Work
-        run: |
-          echo '::set-output name=FAV_NUMBER::3'
-          echo '::set-output name=FAV_COLOR::blue'      
-          ls -la  
-          ls ${{ github.workspace }}
-          cd ${{ github.workspace }}
-        id: abc
-
     # Setup gcloud CLI
       - name: Install gcloud
         uses: google-github-actions/setup-gcloud@v0
