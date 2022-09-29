@@ -36,7 +36,7 @@ metadata:
     tier: backend
   name: api
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: api
@@ -63,7 +63,7 @@ spec:
         envFrom:
         - configMapRef:
             name: api-config
-        image: gcr.io/praxis-gear-314101/neutrino-api:71b3c45-dirty@sha256:8fd45aeb299c3dcf70c771b42f686565119fcae08138ec83192b5f98b57ef269
+        image: gcr.io/praxis-gear-314101/neutrino-api/neutrino-api:132752c-dirty@sha256:5bce9c884bedbb7ac24ca76ad203a223dd5a1eeb5a81d953c4df3fdc856afa29
         name: api
         ports:
         - containerPort: 80
