@@ -29,7 +29,7 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     steps:
     # Setup gcloud CLI
-      - uses: actions/checkout@main
+      - uses: actions/checkout
       - name: Install gcloud
         uses: google-github-actions/setup-gcloud@v0
         with:
@@ -60,19 +60,19 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build and deploy to cluster with Skaffold
         run: |
-          skaffold run && skaffold render --output=kubernetes/manifest.yaml
-          
-      - name: GIT commit and push docs
-        run: |
+          skaffold run  
+      # && skaffold render --output=kubernetes/manifest.yaml
+      # - name: GIT commit and push docs
+      #   run: |
 
-          git config --global user.name "martineliasq"
-          git config --global user.email "elias.quintero@udea.edu.co"
-          git add kubernetes/manifest.yaml
-          git commit -m "New Deployment"
-          git push origin main
+      #     git config --global user.name "martineliasq"
+      #     git config --global user.email "elias.quintero@udea.edu.co"
+      #     git add kubernetes/manifest.yaml
+      #     git commit -m "New Deployment"
+      #     git push origin main
 
-      - name: Verify deployment
-        run: |
-          kubectl get all
+      # - name: Verify deployment
+      #   run: |
+      #     kubectl get all
 
   
