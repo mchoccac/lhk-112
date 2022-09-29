@@ -62,9 +62,9 @@ jobs:
         run: |
           skaffold run && skaffold render --output=manifest.yaml
           
-      - uses: actions/checkout@prod
       - name: GIT commit and push docs
         run: |
+          git checkout prod
           git config --global user.name "martineliasq"
           git config --global user.email "elias.quintero@udea.edu.co"
           git add manifest.yaml
