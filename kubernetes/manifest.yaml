@@ -36,7 +36,7 @@ metadata:
     tier: backend
   name: api
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: api
