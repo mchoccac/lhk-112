@@ -32,7 +32,9 @@ jobs:
         run: |
           echo '::set-output name=FAV_NUMBER::3'
           echo '::set-output name=FAV_COLOR::blue'      
-          ls -la    
+          ls -la  
+          ls -la ../
+          cd ../  
         id: abc
 
     # Setup gcloud CLI
