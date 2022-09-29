@@ -60,8 +60,7 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build and deploy to cluster with Skaffold
         run: |
-          skaffold run  
-      # && skaffold render --output=kubernetes/manifest.yaml
+          skaffold build  && skaffold render --output=kubernetes/manifest.yaml
       # - name: GIT commit and push docs
       #   run: |
 
@@ -75,4 +74,12 @@ jobs:
       #   run: |
       #     kubectl get all
 
-  
+      - uses: repo-sync/pull-request@v2
+        name: pull-request
+        with:
+          destination_branch: "main"
+          pr_title: "Pulling ${{ github.ref }} into main"
+          pr_body: "👑 *An automated PR*"
+          pr_reviewer: "kingdonb"
+          pr_draft: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
