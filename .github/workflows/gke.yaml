@@ -1,14 +1,4 @@
-#Prerequisite
-#1. Create a new Google Cloud Project (or select an existing project) and 
-#2. Enable the Container Registry and Kubernetes Engine APIs.
-#3. Create a new GKE cluster or select an existing GKE cluster.
-#4. Add the the following Cloud IAM roles to your service account:
-    #Kubernetes Engine Developer - allows deploying to GKE
-    #Storage Admin - allows publishing to Container Registry
-#5. Create a JSON service account key for the service account.
-    #Add the following secrets to your repository's secrets:
-    #PROJECT_ID: Google Cloud project ID
-    #SERVICE_ACCOUNT_KEY: the content of the service account JSON file.
+
 
 name: Deploy to GKE
 on:
@@ -37,30 +27,31 @@ jobs:
           service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           project_id: ${{ secrets.PROJECT_ID }}
           export_default_credentials: true
-    # Download tools for Continuous Delivery.
-      - name: Install kubectl and skaffold
-        uses: daisaru11/setup-cd-tools@v1
-        with:
-          kubectl: "1.25.2"
-          skaffold: "1.39.2"
-    # Cache artifacts like dependencies to improve workflow execution time   
-      - name: Cache skaffold image builds & config
-        uses: actions/cache@v2
-        with:
-          path: ~/.skaffold/
-          key: fixed-${{ github.sha }}
-    # Configure Docker to use the gcloud command-line tool as a credential
-    # helper for authentication
-      - name: Configure docker
-        run: |
-          gcloud --quiet auth configure-docker
-    # Get the GKE credentials so we can deploy to the cluster
-      - name: Connect to cluster
-        run: |
-          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
-      - name: Build and deploy to cluster with Skaffold
-        run: |
-          skaffold build  && skaffold render --output=kubernetes/manifest.yaml
+
+#       - name: Install kubectl and skaffold
+#         uses: daisaru11/setup-cd-tools@v1
+#         with:
+#           kubectl: "1.25.2"
+#           skaffold: "1.39.2"
+
+#       - name: Cache skaffold image builds & config
+#         uses: actions/cache@v2
+#         with:
+#           path: ~/.skaffold/
+#           key: fixed-${{ github.sha }}
+
+# n
+#       - name: Configure docker
+#         run: |
+#           gcloud --quiet auth configure-docker
+
+
+#       - name: Connect to cluster
+#         run: |
+#           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+#       - name: Build and deploy to cluster with Skaffold
+#         run: |
+#           skaffold build  && skaffold render --output=kubernetes/manifest.yaml
       # - name: GIT commit and push docs
       #   run: |
 
