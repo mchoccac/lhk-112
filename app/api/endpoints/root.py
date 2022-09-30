@@ -6,4 +6,5 @@ router = APIRouter()
 @router.get("/ping")
 def read_root():
     """Ping the API."""
-    return {"ping": "pong from skaffold!"}
+    message = "LHK"
+    return {"ping": f"pong from {message}!"}
