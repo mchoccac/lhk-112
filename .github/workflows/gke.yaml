@@ -49,27 +49,26 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Build and deploy to cluster with Skaffold
         run: |
-          skaffold run
-        # && skaffold render --output=kubernetes/manifest.yaml
-      # - name: GIT commit and push docs
-      #   run: |
+          skaffold build  && skaffold render --output=kubernetes/manifest.yaml
+      - name: GIT commit and push docs
+        run: |
 
-      #     git config --global user.name "martineliasq"
-      #     git config --global user.email "elias.quintero@udea.edu.co"
-      #     git add kubernetes/manifest.yaml
-      #     git commit -m "New Deployment"
+          git config --global user.name "martineliasq"
+          git config --global user.email "elias.quintero@udea.edu.co"
+          git add kubernetes/manifest.yaml
+          git commit -m "New Deployment"
         #  git push origin main
 
-      # - name: Verify deployment
-      #   run: |
-      #     kubectl get all
+      - name: Verify deployment
+        run: |
+          kubectl get all
 
-      # - uses: repo-sync/pull-request@v2
-      #   name: pull-request
-      #   with:
-      #     destination_branch: "prod"
-      #     pr_title: "Pulling ${{ github.ref }} into Prod"
-      #     pr_body: "👑 *An automated PR*"
-      #     pr_reviewer: "martineliasq"
-      #     pr_draft: true
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: repo-sync/pull-request@v2
+        name: pull-request
+        with:
+          destination_branch: "prod"
+          pr_title: "Pulling ${{ github.ref }} into Prod"
+          pr_body: "👑 *An automated PR*"
+          pr_reviewer: "martineliasq"
+          pr_draft: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
